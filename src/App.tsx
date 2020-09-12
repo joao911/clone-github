@@ -1,9 +1,23 @@
 import React from 'react';
-
+import {BrowserRouter, Routes ,Route} from 'react-router-dom';
+import GlobalStyles from './styles/GlobalStyles';
+import Header from './components/Header';
+import Profile from './pages/Profile';
+import Repo from './pages/Repo';
+import Footer from './components/Footer';
 
 function App() {
   return (
-   <h1>clone git</h1>
+   <BrowserRouter>
+   <Header/>
+      <Routes>
+        <Route path="/" element={<Profile/>}/>
+        <Route path="/:username" element={<Profile/>}/>
+        <Route path="/username/reponame" element={<Repo/>}/>
+      </Routes>
+     <Footer/>  
+     <GlobalStyles/>
+   </BrowserRouter>
   );
 }
 
