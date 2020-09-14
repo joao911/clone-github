@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileData from '../../components/ProfileData';
-import { Container, Main, LeftSide, RightSide } from './styles';
+import RepoCard from '../../components/RepoCard';
+import { Container, Main, LeftSide, RightSide, Repos } from './styles';
 
 const Profile: React.FC = () => {
   return (
@@ -21,7 +22,24 @@ const Profile: React.FC = () => {
           />
         </LeftSide>
 
-        <RightSide></RightSide>
+        <RightSide>
+          <Repos>
+            <h2>Random repos</h2>
+            <div>
+              {[1, 2, 3, 4 ,5 ,6 ].map(n => (
+                <RepoCard
+                key={n}
+                username={'joaodeveloper'}
+                reponame={'clone-github'}
+                description={'Contains all of my YouTube Lessons code'}
+                language={n % 3 === 0 ? 'Javascripit': 'Typescritp'}
+                stars={8}
+                forks={4}
+                />
+              ))}
+            </div>
+          </Repos>
+        </RightSide>
       </Main>
     </Container>
   );
