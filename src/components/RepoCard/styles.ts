@@ -48,22 +48,21 @@ export const Botside = styled.div`
         }
     } 
  }
- .language{
-     width: 12px;
-     height: 12px;
-     border-radius: 50%;
-     flex-shrink: 0;
-
-     &.other{
-         background-color: var(--other-language);
-     }
-     &.javascript{
-         background-color: var(--javascript);
-     }
-     &.typescript{
-         background-color: var(--typescript);
-     }
- }
+ .language {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    &.other {
+      background: var(--other-language);
+    }
+    &.javascript {
+      background: var(--javascript);
+    }
+    &.typescript {
+      background: var(--typescript);
+    }
+  }
 `;
 const iconCSS = css `
  width: 16px;
