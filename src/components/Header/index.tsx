@@ -1,13 +1,33 @@
-import React from 'react';
-
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {ThemeName} from '../../styles/themes'
 import { Container, Githublogo, SearchForm} from './styles';
 
-const Header: React.FC = () => {
+interface Props{
+  themeName: ThemeName;
+  setThemeName: (newName: ThemeName) => void;
+}
+const Header: React.FC<Props> = ({themeName, setThemeName}) => {
+  const [ search, setSeach] = useState('');
+  const navigate = useNavigate();
+
+  function handleSubmit(event: React.FormEvent){
+    event.preventDefault();
+
+    navigate('/' + search.toLocaleLowerCase().trim());
+  }
+
+  function toggleTheme(){
+    setThemeName(themeName === 'light' ? 'dark' : 'light')
+  }
   return (
       <Container>
-        <Githublogo/>
-        <SearchForm>
-          <input placeholder="Enter Username or repo..."/>
+        <Githublogo onClick={toggleTheme}/>
+        <SearchForm onSubmit={handleSubmit}>
+          <input placeholder="Enter Username or repo..."
+          value={search}
+          onChange={ e=> setSeach(e.currentTarget.value)}
+          />
         </SearchForm>
       </Container>
   );
